@@ -14,7 +14,7 @@ import random
 async_client = httpx.AsyncClient()
 
 
-DEFAULT_MAX_RETRIES = 8
+DEFAULT_MAX_RETRIES = 3
 
 
 @dataclass
@@ -96,7 +96,7 @@ def fetch_panorama_tile(
 
             if not response.ok:
                 print(f"HTTP {response.status_code} for tile {tile_info.fileurl}. Retry {attempt+1}/{max_retries}")
-                time.sleep(2 + random.uniform(0, 1))
+                time.sleep(1 + random.uniform(0, 1))
                 continue
 
             # Check content type
