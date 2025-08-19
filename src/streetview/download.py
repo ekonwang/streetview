@@ -96,7 +96,7 @@ def fetch_panorama_tile(
 
             if not response.ok:
                 print(f"HTTP {response.status_code} for tile {tile_info.fileurl}. Retry {attempt+1}/{max_retries}")
-                time.sleep(1 + random.uniform(0, 1))
+                time.sleep(random.uniform(0.1, 0.5))
                 continue
 
             # Check content type
